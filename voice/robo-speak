@@ -1,0 +1,15 @@
+#!/bin/bash
+cd /data/archbkp/robot/voice
+export DISPLAY=:0.0
+echo -e "var message = "\"$1\" > ./msg.js
+play-atte
+set-volume 20
+if [ -z $(pgrep firefox) ]
+then
+    firefox -new-window ./index.html &
+    exit 0
+fi
+DISPLAY=:0.0 wmctrl -R firefox
+sleep 0.2
+xdotool key F5
+exit 0

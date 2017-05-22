@@ -1,0 +1,8 @@
+#!/bin/bash
+stop-mplayer
+play-atte
+set-volume 50
+sudo radio.py  Radio D &
+sleep 1800
+stop-mplayer
+exit 0

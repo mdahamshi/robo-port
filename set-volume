@@ -1,0 +1,8 @@
+#!/bin/bash
+if [ -z "$1" ]
+then
+	echo "usage:  set-voulme [value%]"
+	exit 1
+fi
+sudo amixer -c 0 sset Master $1%
+exit 0

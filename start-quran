@@ -1,0 +1,10 @@
+#!/bin/bash
+stop-mplayer
+play-atte
+set-volume 35
+stop-mplayer
+cd /data/quran
+sudo mplayer $(shuf -n 10 list) &
+sleep 1800
+stop-mplayer
+exit 0
