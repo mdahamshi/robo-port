@@ -2,7 +2,7 @@
 stop-mplayer
 play-atte
 set-volume 50
-sudo radio.py  Radio D &
+mplayer http://radiocast-rr-d.vidnt.com:8000/ipbc_IPBCmakanradioLAM &
 sleep 1800
 stop-mplayer
 exit 0

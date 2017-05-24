@@ -1,4 +1,4 @@
 #!/bin/bash
 set-volume 50
-sudo mplayer /data/archbkp/robot/audio/atte.ogg 
+mplayer /data/archbkp/robot/audio/atte.ogg 
 exit 0

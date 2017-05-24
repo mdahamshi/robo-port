@@ -2,5 +2,5 @@
 stop-mplayer
 play-atte
 set-volume 50
-sudo mplayer /data/archbkp/robot/audio/bday.mp3 &
+mplayer /data/archbkp/robot/audio/bday.mp3 &
 exit 0
