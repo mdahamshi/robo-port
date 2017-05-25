@@ -30,7 +30,6 @@ def isBDay(date):
 day_of_year = dayOfYear(today.month, today.day)
 result = isBDay(day_of_year)
 if result:
-    print result 
     speak.speakHelper(result,'speak')
     os.execv("/usr/bin/play-bday", sys.argv)
 

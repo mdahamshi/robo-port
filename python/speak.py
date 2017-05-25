@@ -10,11 +10,10 @@ import codecs
   
 def speakHelper(msg, repeat):
     msgToSpeakFile = codecs.open('/data/archbkp/robot/voice/msg.js','w','utf-8')
-    msgToSpeak = msg
+    msgToSpeak = unicode(msg,'utf-8')
     if repeat == 'speakr':    #speakr = speak + repeat
         msgToSpeak = msgToSpeak +unicode('، أُكَرِّر ،','utf-8')+ msg 
     msgToSpeakFile.write('var message = '+ msgQuote(msgToSpeak))
-    subProcess('robo-speak')
 
 
 def subProcess(sub):
