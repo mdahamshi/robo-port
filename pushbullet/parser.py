@@ -28,7 +28,8 @@ def parse(message):
     arguments = message.split('::')
 
     if arguments[0] == 'speak' or arguments[0] == 'speakr':
-        speakHelper(arguments[1],arguments[0])
+        if len(arguments) > 1:
+            speakHelper(arguments[1],arguments[0])
         return
     
     print "get args: ",arguments
