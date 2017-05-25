@@ -37,7 +37,7 @@ def parse(message):
         subProcess('/usr/bin/play-atte')
         replaceMe("pushServer")
     
-    arguments[0] =   command
+    arguments[0] =  '/usr/bin/' +  command
     print "new process args: ",arguments
     newProgram = subProcess(arguments)
 
@@ -56,6 +56,7 @@ def getCommand(message):
         , 'up': "volume-up"
         , 'restart': "restart"
         , 'imhere': "play-arrive"
+        , 'speak': "echo -e "
     }.get(message, "pbme \"pushServer: wrong command received !\";echo "+message+" > /data/tmp/err")
 
 def getEnvo(message):
@@ -70,12 +71,11 @@ def replaceMe(newProcess):
     os.execv('/usr/bin/' + newProcess , sys.argv)
 
 def subProcess(sub):
-    sub[0] = '/usr/bin/' + sub[0]
     subprocess.Popen(sub, shell=True \
     , preexec_fn=chuser(pw_record.pw_uid, pw_record.pw_gid),env=env)  
   
 def speakHelper(msg, repeat):
-    msgToSpeakFile = codecs.open('/data/tmp/msg.js','w','utf-8')
+    msgToSpeakFile = codecs.open('/data/archbkp/robot/voice/msg.js','w','utf-8')
     msgToSpeak = msg
     if repeat == 'speakr':    #speakr = speak + repeat
         msgToSpeak = msgToSpeak +unicode('، أُكَرِّر ،','utf-8')+ msg 
