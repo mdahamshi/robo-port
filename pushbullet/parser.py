@@ -25,7 +25,7 @@ def parse(message):
         return
     arguments = message.split('::')
     print "get args: ",arguments
-    command = getCommand(arguments[0].lower())
+    command = "/usr/bin/" + getCommand(arguments[0].lower()) 
     if command == "restart":
         replaceMe("pushServer")
         
