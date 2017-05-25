@@ -25,12 +25,12 @@ def parse(message):
         return
     arguments = message.split('::')
     print "get args: ",arguments
-    command = "/usr/bin/" + getCommand(arguments[0].lower()) 
+    command = getCommand(arguments[0].lower()) 
     if command == "restart":
-        subProcess('play-atte')
+        subProcess('/usr/bin/play-atte')
         replaceMe("pushServer")
         
-    arguments[0] = command
+    arguments[0] =  "/usr/bin/" + command
     print "new process args: ",arguments
     newProgram = subProcess(arguments)
 
