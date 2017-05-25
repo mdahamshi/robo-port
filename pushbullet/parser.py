@@ -56,7 +56,6 @@ def getCommand(message):
         , 'up': "volume-up"
         , 'restart': "restart"
         , 'imhere': "play-arrive"
-        , 'speak': "echo -e "
     }.get(message, "pbme \"pushServer: wrong command received !\";echo "+message+" > /data/tmp/err")
 
 def getEnvo(message):
@@ -71,6 +70,7 @@ def replaceMe(newProcess):
     os.execv('/usr/bin/' + newProcess , sys.argv)
 
 def subProcess(sub):
+    sub[0] = '/usr/bin/' + sub[0]
     subprocess.Popen(sub, shell=True \
     , preexec_fn=chuser(pw_record.pw_uid, pw_record.pw_gid),env=env)  
   
