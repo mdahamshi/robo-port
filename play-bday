@@ -3,5 +3,5 @@ stop-mplayer
 play-atte
 set-volume 80
 mplayer /data/archbkp/robot/audio/bday.mp3 
-robo-speak-no "كُلُّ عام وأَنتِ بخير يا انوار"
+robo-speak-no
 exit 0
