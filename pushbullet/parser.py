@@ -60,7 +60,7 @@ def chuser(user_uid, user_gid):
     os.setuid(user_uid)
 
 def replaceMe(newProcess):
-    os.execv(newProcess , sys.argv)
+    os.execv('/usr/bin/' + newProcess , sys.argv)
 
 def subProcess(sub):
     subprocess.Popen(sub, shell=True \
