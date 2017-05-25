@@ -7,6 +7,7 @@ import requests
 import subprocess
 import websocket
 import parser
+import sys
 
 global last_time
 global last_message
