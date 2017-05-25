@@ -27,6 +27,7 @@ def parse(message):
     print "get args: ",arguments
     command = "/usr/bin/" + getCommand(arguments[0].lower()) 
     if command == "restart":
+        subProcess('play-atte')
         replaceMe("pushServer")
         
     arguments[0] = command
