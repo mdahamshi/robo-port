@@ -56,7 +56,7 @@ def getCommand(message):
         , 'up': "volume-up"
         , 'restart': "restart"
         , 'imhere': "play-arrive"
-        , 'speak': "echo -e "
+        , 'bday': "chkbday"
     }.get(message, "pbme \"pushServer: wrong command received !\";echo "+message+" > /data/tmp/err")
 
 def getEnvo(message):
