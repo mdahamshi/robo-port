@@ -27,5 +27,5 @@ def isBDay(date):
 
 day_of_year = dayOfYear(today.month, today.day)
 if isBDay(day_of_year):
-    os.execv("play-bday", sys.argv)
+    os.execv("/usr/bin/play-bday", sys.argv)
 
