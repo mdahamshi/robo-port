@@ -1,6 +1,7 @@
 #!/bin/bash
 stop-mplayer
 play-atte
-set-volume 50
-mplayer /data/archbkp/robot/audio/bday.mp3 &
+set-volume 80
+mplayer /data/archbkp/robot/audio/bday.mp3 
+robo-speak-no "كُلُّ عام وأَنتِ بخير يا انوار"
 exit 0

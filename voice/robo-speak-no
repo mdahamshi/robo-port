@@ -1,0 +1,18 @@
+
+#!/bin/bash
+cd /data/archbkp/robot/voice
+export DISPLAY=:0.0
+if [ -n "$1" ]
+then
+	echo -e "var message = "\"$1\" > ./msg.js
+fi
+set-volume 60
+if [ -z $(pgrep chromium | tail -n 1) ]
+then
+    chromium  ./index.html &
+    exit 0
+fi
+DISPLAY=:0.0 wmctrl -R chromium
+sleep 0.2
+xdotool key F5
+exit 0

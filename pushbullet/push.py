@@ -1,5 +1,4 @@
 #!/usr/bin/env python2
-# -*- coding: utf-8 -*-
 import ConfigParser
 import time
 import json
@@ -9,20 +8,24 @@ import subprocess
 import websocket
 import parser
 
-
 global last_time
 global last_message
+global toExit 
 last_time = time.time()
 last_message = ""
 def on_error(ws, error):
   print error
+  os.execv("/data/archbkp/robot/pushbullet/pushDelay", sys.argv)
+
 
 def on_close(ws):
   print "closed"
+  os.execv("/data/archbkp/robot/pushbullet/pushDelay", sys.argv)
 
 def on_message(ws, message):
   global last_time
   global last_message
+  print message
   # print time.time()
   # print last_time
   message = json.loads(message)
@@ -35,21 +38,17 @@ def on_message(ws, message):
   ten_seconds_ago = str(time.time() - 10  * 1000)
   
   data = json.loads(requests.get(URL + ten_seconds_ago, auth=(api_key, '')).content)
+  print "got data: ",data
   if "title" in data["pushes"][0]:
     theMsg = data["pushes"][0]["title"]
   else:
     theMsg = data["pushes"][0]["body"]
   if deltaTime < 6 and last_message == theMsg:
     return
-  theMsg = theMsg.decode('utf8')
-  print theMsg
-  
-    
   parser.parse(theMsg)
   last_message = theMsg
   last_time = time.time()
 
-  print theMsg
 #   if message["type"] == "tickle" and message["subtype"] == "push":
 #     ten_minutes_ago = str(time.time() - 10 * 60 * 1000)
 #     URL = "https://api.pushbullet.com/v2/pushes?modified_after="
@@ -60,7 +59,8 @@ def on_message(ws, message):
 if __name__ == "__main__":
   websocket.enableTrace(True)
 
-  
+  reload(parser)
+  import parser
   apiFile = open('/data/aes/key')
   api_key = apiFile.read().strip()
 	

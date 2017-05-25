@@ -1,0 +1,7 @@
+#!/bin/bash
+play-atte
+set-volume 60
+cd /data/archbkp/robot/audio
+mplayer arrive.mp3 
+robo-speak-no "لقد وصل المَلِكْ"
+exit 0

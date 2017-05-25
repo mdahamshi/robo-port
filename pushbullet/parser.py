@@ -1,12 +1,10 @@
 #!/usr/bin/env python2
-# -*- coding: utf-8 -*-
 
 import subprocess
 import os
 import sys
 import pwd  
 import signal
-
 global program
 global chars
 chars = set('\;\&\|')
@@ -23,34 +21,35 @@ def parse(message):
     global program
     global chars
     if any((c in chars) for c in message):
-        subprocess.Popen("pbme \"Attack detetcted !\"", shell=True \
-        , preexec_fn=chuser(pw_record.pw_uid, pw_record.pw_gid),env=env)
+        subProcess("pbme \"Attack detetcted !\"")
         return
     arguments = message.split('::')
+    print "get args: ",arguments
     command = getCommand(arguments[0].lower())
     if command == "restart":
-        os.execv("/data/archbkp/robot/pushbullet/push.py", sys.argv)
+        replaceMe("pushServer")
+        
     arguments[0] = command
-    print command
-    program = subprocess.Popen(arguments, shell=True \
-    , preexec_fn=chuser(pw_record.pw_uid, pw_record.pw_gid),env=env)
+    print "new process args: ",arguments
+    newProgram = subProcess(arguments)
 
 
 def getCommand(message):
     return {
-        'radio': "start-radio &> /dev/null"
+        'radio': "start-radio"
         , 'test': "env > /data/tmp/ee"
         , 'stop': "stop-mplayer"
         , 's': "stop-mplayer"
-        , 'quran': "start-quran &> /dev/null"
+        , 'quran': "start-quran"
         , '+': "volume-up"
         , '-': "volume-down"
         , 'down': "volume-down"
 	    , 'play': "play-atte"
         , 'up': "volume-up"
-        , "restart": "restart"
-        , "speak": "robo-speak"
-    }.get(message, "pbme \"pushServer: wrong command received !\"")
+        , 'restart': "restart"
+        , 'imhere': "play-arrive"
+        , 'speak': "robo-speak"
+    }.get(message, "pbme \"pushServer: wrong command received !\";echo "+message+" > /data/tmp/err")
 
 def getEnvo(message):
     return {
@@ -59,4 +58,11 @@ def getEnvo(message):
 def chuser(user_uid, user_gid):
     os.setgid(user_gid)
     os.setuid(user_uid)
+
+def replaceMe(newProcess):
+    os.execv(newProcess , sys.argv)
+
+def subProcess(sub):
+    subprocess.Popen(sub, shell=True \
+    , preexec_fn=chuser(pw_record.pw_uid, pw_record.pw_gid),env=env)  
   
