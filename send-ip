@@ -1,0 +1,7 @@
+#!/bin/bash
+
+myip=$(dig +short myip.opendns.com @resolver1.opendns.com)
+
+pbme $myip
+
+exit 0
