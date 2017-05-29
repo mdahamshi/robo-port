@@ -8,3 +8,5 @@ sed '/play-azan/d' oldCron > newCron
 ./python/azan.py
 
 cat cronAzan >> newCron
+
+crontab newCron
