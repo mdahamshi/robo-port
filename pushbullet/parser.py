@@ -58,6 +58,7 @@ def getCommand(message):
         , 'imhere': "play-arrive"
         , 'bday': "chkbday"
         , 'ip': "send-ip"
+        , '3ed': "play-3ed"
     }.get(message, "pbme \"pushServer: wrong command received !\";echo "+message+" > /data/tmp/err")
 
 def getEnvo(message):
