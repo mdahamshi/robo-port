@@ -1,0 +1,9 @@
+#!/bin/bash
+dir=$(dirname $(readlink  -f "$0"))
+cd $dir
+./stop-mplayer
+./play-atte
+./set-volume 80
+mplayer ./audio/mom.mp3
+./voice/robo-speak-no "كُلُّ عام وأَنتِ بخير يا سَيِّدَة أُمُ محمد"
+exit 0
