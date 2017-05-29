@@ -82,7 +82,7 @@ class PrayTimes():
 	methods = {
 		'MWL': {
 			'name': 'Muslim World League',
-			'params': { 'fajr': 18, 'isha': 17 } },
+			'params': { 'fajr': 18.2, 'isha': 17 } },
 		'ISNA': {
 			'name': 'Islamic Society of North America (ISNA)',
 			'params': { 'fajr': 15, 'isha': 15 } },
@@ -111,14 +111,14 @@ class PrayTimes():
 
 	#---------------------- Default Settings --------------------
 
-	calcMethod = 'Makkah'
+	calcMethod = 'MWL'
 
 	# do not change anything here; use adjust method instead
 	settings = {
 		"imsak"    : '10 min',
 		"dhuhr"    : '0 min',
 		"asr"      : 'Standard',
-		"highLats" : 'NightMiddle'
+		"highLats" : 'None'
 	}
 
 	timeFormat = '24h'
@@ -147,7 +147,7 @@ class PrayTimes():
 
 		# init time offsets
 		for name in self.timeNames:
-			self.offset[name] = 0
+			self.offset[name] = 1
 
 
 	#-------------------- Interface Functions --------------------
@@ -431,8 +431,8 @@ prayTimes = PrayTimes()
 
 #-------------------------- Test Code --------------------------
 
-lon = 32.7352798
-lat = 35.3365264
+lon = 31.75
+lat = 35
 # sample code to run in standalone mode only
 def getAzan(time):
 	return{
@@ -446,7 +446,7 @@ if __name__ == "__main__":
 		minute = str(times[i.lower()][1])
 		hour = str(times[i.lower()][0])
 		cron_azan.write(minute +' ' + hour + ' *'*3 + ' play-azan '\
-		+ getAzan(i) + '\n')
+		+ getAzan(i) + '\n' )
 		
 
         #32.7352798,35.3365264
