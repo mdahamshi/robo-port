@@ -445,7 +445,7 @@ if __name__ == "__main__":
 	for i in ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha']:
 		minute = str(times[i.lower()][1])
 		hour = str(times[i.lower()][0])
-		cron_azan.write(minute +' ' + hour + ' * '*3 + 'play-azan '\
+		cron_azan.write(minute +' ' + hour + ' *'*3 + ' play-azan '\
 		+ getAzan(i) + '\n')
 		
 
