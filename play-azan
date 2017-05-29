@@ -6,9 +6,9 @@ cd $dir
 
 if [ $1 = 'fajr.mp3' ]
 then
-    ./set-volume 30
+    ./set-volume 20
 else
-    ./set-volume 60
+    ./set-volume 50
 fi
 
 mplayer ./audio/$1
