@@ -1,0 +1,16 @@
+#!/bin/bash
+dir=$(dirname $(readlink  -f "$0"))
+cd $dir
+./stop-mplayer
+./play-atte
+
+if [ $1 = 'fajr.mp3' ]
+then
+    ./set-volume 30
+else
+    ./set-volume 60
+fi
+
+mplayer ./audio/$1
+
+exit 0
