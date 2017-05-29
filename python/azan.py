@@ -441,7 +441,7 @@ def getAzan(time):
 if __name__ == "__main__":
 	from datetime import date
 	times = prayTimes.getTimes(date.today(), (lon, lat), 3 if is_dst() else 2);
-	cron_azan = open('../cronAzan','w')
+	cron_azan = open('./cronAzan','w')
 	for i in ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha']:
 		minute = str(times[i.lower()][1])
 		hour = str(times[i.lower()][0])
