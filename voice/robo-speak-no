@@ -1,4 +1,3 @@
-
 #!/bin/bash
 cd /data/archbkp/robot/voice
 export DISPLAY=:0.0

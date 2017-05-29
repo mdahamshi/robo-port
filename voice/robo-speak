@@ -1,5 +1,6 @@
 #!/bin/bash
-cd /data/archbkp/robot/voice
+dir=$(dirname $(readlink  -f "$0"))
+cd $dir
 export DISPLAY=:0.0
 if [ -n "$1" ]
 then
