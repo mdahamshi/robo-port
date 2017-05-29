@@ -32,7 +32,7 @@ def parse(message):
             speakHelper(arguments[1],arguments[0])
         return
     
-    command = getCommand(arguments[0].lower()) 
+    command = getCommand(arguments[0].lower().strip()) 
     if command == "restart":
         subProcess('/usr/bin/play-atte')
         replaceMe("pushServer")
