@@ -32,7 +32,6 @@ def parse(message):
             speakHelper(arguments[1],arguments[0])
         return
     
-    print "get args: ",arguments
     command = getCommand(arguments[0].lower()) 
     if command == "restart":
         subProcess('/usr/bin/play-atte')

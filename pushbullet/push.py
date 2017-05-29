@@ -12,6 +12,7 @@ import sys
 global last_time
 global last_message
 global toExit 
+roboMail = "mmd.robot@gmail.com"
 last_time = time.time()
 last_message = ""
 def on_error(ws, error):
@@ -40,6 +41,12 @@ def on_message(ws, message):
   
   data = json.loads(requests.get(URL + ten_seconds_ago, auth=(api_key, '')).content)
   print "got data: ",data
+  freshData = data["pushes"][0]
+
+  if "sender_email" in freshData: #checking if robot send the message
+    if freshData["sender_email"] == roboMail:
+      return
+
   if "title" in data["pushes"][0]:
     theMsg = data["pushes"][0]["title"]
   else:
