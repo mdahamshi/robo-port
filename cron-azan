@@ -6,7 +6,7 @@ crontab -l > ./data/oldCron
 sed '/play-azan/d' ./data/oldCron > ./data/newCron  
 
 
-./get-azan
+./python/azan.py
 
 cat ./data/cronAzan >> ./data/newCron
 
