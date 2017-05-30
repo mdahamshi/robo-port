@@ -1,0 +1,5 @@
+59 3 * * * play-azan fajr.mp3
+38 12 * * * play-azan azan.mp3
+18 16 * * * play-azan azan.mp3
+40 19 * * * play-azan azan.mp3
+11 21 * * * play-azan azan.mp3
