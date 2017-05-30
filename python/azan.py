@@ -82,7 +82,7 @@ class PrayTimes():
 	methods = {
 		'MWL': {
 			'name': 'Muslim World League',
-			'params': { 'fajr': 18.2, 'isha': 17 } },
+			'params': { 'fajr': 18, 'isha': 17 } },
 		'ISNA': {
 			'name': 'Islamic Society of North America (ISNA)',
 			'params': { 'fajr': 15, 'isha': 15 } },
@@ -118,7 +118,7 @@ class PrayTimes():
 		"imsak"    : '10 min',
 		"dhuhr"    : '0 min',
 		"asr"      : 'Standard',
-		"highLats" : 'None'
+		"highLats" : 'AngleBased'
 	}
 
 	timeFormat = '24h'
@@ -147,7 +147,7 @@ class PrayTimes():
 
 		# init time offsets
 		for name in self.timeNames:
-			self.offset[name] = 1
+			self.offset[name] = 0
 
 
 	#-------------------- Interface Functions --------------------
@@ -440,7 +440,7 @@ def getAzan(time):
 	}.get(time, 'azan.mp3')
 if __name__ == "__main__":
 	from datetime import date
-	times = prayTimes.getTimes(date.today(), (lon, lat), 3 if is_dst() else 2);
+	times = prayTimes.getTimes(date(2017,4,2), (lon, lat), 3 if is_dst() else 2);
 	cron_azan = open('./cronAzan','w')
 	for i in ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha']:
 		minute = str(times[i.lower()][1])

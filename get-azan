@@ -1,0 +1,12 @@
+#!/bin/bash
+dir=$(dirname $(readlink  -f "$0"))
+cd $dir
+
+w3m https://www.islamicfinder.org/world/palestine/45647456/\
+jerusalem-region-prayer-times/ > ./data/w3mResult
+
+
+grep '[0-9][0-9]:[0-9][0-9]' ./data/w3mResult | head -n 6 \
+|awk 'BEGIN{FS=":| "}\
+    NR!=2{/^[0-9]/;\
+    printf "%d %d * * * play-azan %s\n",$2,$1,NR==1? "fajr.mp3" : "azan.mp3"} ' > ./data/cronAzan

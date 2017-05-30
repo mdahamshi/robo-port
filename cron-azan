@@ -2,11 +2,12 @@
 dir=$(dirname $(readlink  -f "$0"))
 cd $dir
 
-crontab -l > oldCron
-sed '/play-azan/d' oldCron > newCron  
+crontab -l > ./data/oldCron
+sed '/play-azan/d' ./data/oldCron > ./data/newCron  
 
-./python/azan.py
 
-cat cronAzan >> newCron
+./get-azan
 
-crontab newCron
+cat ./data/cronAzan >> ./data/newCron
+
+crontab ./data/newCron
