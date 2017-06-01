@@ -446,7 +446,7 @@ if __name__ == "__main__":
 		minute = str(times[i.lower()][1])
 		hour = str(times[i.lower()][0])
 		cron_azan.write(minute +' ' + hour + ' *'*3 + ' play-azan '\
-		+ getAzan(i) + '\n' )
+		+ getAzan(i) + " &> /dev/null" +'\n' )
 		
 
         #32.7352798,35.3365264

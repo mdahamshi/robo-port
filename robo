@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+
+# --------------------- Copyright Block ----------------------
+
+# robo. Personal home tasks automation (ver 0.1)
+# Copyright (C) 2017 MMD-SYS 
+
+# Author: Mohammad Dahamsih
+# Email: Mohammad.Dahamshi@gmail.com
+# Github: github.com/mdahamshi
+
+# License: GNU LGPL v3.0
+
+# TERMS OF USE:
+# 	Permission is granted to use this code, with or
+# 	without modification, in any website or application
+# 	provided that credit is given to the original work
+# 	with a link back to PrayTimes.org.
+
+# This program is distributed in the hope that it will
+# be useful, but WITHOUT ANY WARRANTY.
+
+# PLEASE DO NOT REMOVE THIS COPYRIGHT BLOCK.
+
+
+dir=$(dirname $(readlink  -f "$0"))
+cd $dir
+
+
+
+
+function motherDay()
+{
+    $(stop-mplayer)
+    ./play-atte
+    ./set-volume 80
+    mplayer ./audio/mom.mp3
+    ./voice/robo-speak-no "كُلُّ عام وأَنتِ بخير يا سَيِّدَة أُمُ محمد"
+}
+function cron-azan()
+{
+    crontab -l > ./data/oldCron
+    sed '/play-azan/d' ./data/oldCron > ./data/newCron  
+
+
+    ./python/azan.py
+
+    cat ./data/cronAzan >> ./data/newCron
+
+    crontab ./data/newCron
+}
+
+function get-azan()
+{
+    w3m https://www.islamicfinder.org/world/palestine/45647456/\
+jerusalem-region-prayer-times/ > ./data/w3mResult
+
+
+    grep '[0-9][0-9]:[0-9][0-9]' ./data/w3mResult | head -n 6 \
+    |awk 'BEGIN{FS=":| "}\
+        NR!=2{/^[0-9]/;\
+        printf "%d %d * * * play-azan %s\n",\
+        $2,(NR > 2 && $1 < 10) ? $1 + 12: $1,NR==1? "fajr.mp3" : "azan.mp3"} ' \
+        > ./data/cronAzan
+
+}
+
+$1
