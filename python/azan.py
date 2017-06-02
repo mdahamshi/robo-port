@@ -118,7 +118,7 @@ class PrayTimes():
 		"imsak"    : '10 min',
 		"dhuhr"    : '0 min',
 		"asr"      : 'Standard',
-		"highLats" : 'AngMleBased'
+		"highLats" : 'None'
 	}
 
 	timeFormat = '24h'
@@ -147,7 +147,7 @@ class PrayTimes():
 
 		# init time offsets
 		for name in self.timeNames:
-			self.offset[name] = 4
+			self.offset[name] = 0
 
 
 	#-------------------- Interface Functions --------------------
@@ -317,6 +317,10 @@ class PrayTimes():
 		if self.isMin(params['isha']):
 			times['isha'] = times['maghrib'] - self.eval(params['isha']) / 60.0
 		times['dhuhr'] += self.eval(params['dhuhr']) / 60.0
+		# my addition
+		times['maghrib'] = times['maghrib'] + 6 / 60.0
+		times['isha'] = times['isha'] + 6 / 60.0
+		times['fajr'] = times['fajr'] - 1 / 60.0
 
 		return times
 
@@ -431,8 +435,8 @@ prayTimes = PrayTimes()
 
 #-------------------------- Test Code --------------------------
 
-lon = 32.7352798
-lat = 35.3365264
+lon = 31.78
+lat = 35.23
 # sample code to run in standalone mode only
 def getAzan(time):
 	return{
@@ -440,8 +444,8 @@ def getAzan(time):
 	}.get(time, 'azan.mp3')
 if __name__ == "__main__":
 	from datetime import date
-	times = prayTimes.getTimes(date(2017,5,30), (lon, lat), 3 if is_dst() else 2);
-	cron_azan = open('./data/cronAzan','w')
+	times = prayTimes.getTimes(date.today(), (lon, lat), 3 if is_dst() else 2);
+	cron_azan = open('../data/cronAzan','w')
 	for i in ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha']:
 		minute = str(times[i.lower()][1])
 		hour = str(times[i.lower()][0])
@@ -450,3 +454,4 @@ if __name__ == "__main__":
 		
 
         #32.7352798,35.3365264
+# (2017,5,30)
