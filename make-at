@@ -1,0 +1,8 @@
+#!/bin/bash
+dir=$(dirname $(readlink  -f "$0"))
+cd $dir
+echo $1 > /tmp/arg
+echo "$2" > ./data/atData
+yy=$(date +%Y)
+at -f ./data/atData "${1}"/${yy}
+

@@ -12,7 +12,7 @@ import sys
 global last_time
 global last_message
 global toExit 
-roboMail = "mmd.robot@gmail.com"
+global myMail
 last_time = time.time()
 last_message = ""
 def on_error(ws, error):
@@ -44,7 +44,7 @@ def on_message(ws, message):
   freshData = data["pushes"][0]
 
   if "sender_email" in freshData: #checking if robot send the message
-    if freshData["sender_email"] == roboMail:
+    if freshData["sender_email"] == myMail:
       return
 
   if "title" in data["pushes"][0]:
@@ -70,6 +70,7 @@ if __name__ == "__main__":
   reload(parser)
   import parser
   apiFile = open('/data/aes/key')
+  myMail = open('/data/aes/mail').read().strip()
   api_key = apiFile.read().strip()
 	
   ws = websocket.WebSocketApp("wss://stream.pushbullet.com/websocket/" + api_key,

@@ -36,8 +36,14 @@ def parse(message):
     if command == "restart":
         subProcess('/usr/bin/play-atte')
         replaceMe("pushServer")
-    
-    arguments[0] =  '/usr/bin/' +  command
+    if os.path.isfile('../'+command):
+        arguments[0] =  '../' +  command 
+    else:
+        arguments[0] =  '/usr/bin/' +  command
+    print os.getcwd()
+    print "new process args: ",arguments
+    for index in range(1,len(arguments)):
+        arguments[index] = arguments[index].encode("ascii")
     print "new process args: ",arguments
     newProgram = subProcess(arguments)
 
@@ -59,6 +65,7 @@ def getCommand(message):
         , 'bday': "chkbday"
         , 'ip': "send-ip"
         , '3ed': "play-3ed"
+        , 'at': "make-at"
     }.get(message, "pbme \"pushServer: wrong command received !\";echo "+message+" > /data/tmp/err")
 
 def getEnvo(message):
@@ -73,7 +80,7 @@ def replaceMe(newProcess):
     os.execv('/usr/bin/' + newProcess , sys.argv)
 
 def subProcess(sub):
-    subprocess.Popen(sub, shell=True \
+    subprocess.Popen(sub \
     , preexec_fn=chuser(pw_record.pw_uid, pw_record.pw_gid),env=env)  
   
 def speakHelper(msg, repeat):
