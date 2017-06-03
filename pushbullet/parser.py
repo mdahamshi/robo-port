@@ -17,7 +17,6 @@ env['LOGNAME'] = pw_record.pw_name
 env['USER'] = pw_record.pw_name
 env['USERNAME'] = pw_record.pw_name
 env['LANG'] = 'en_US.UTF-8'
-
 def parse(message):
     """This function parse a push message and run the corresponding command """
     global program
@@ -41,10 +40,8 @@ def parse(message):
     else:
         arguments[0] =  '/usr/bin/' +  command
     print os.getcwd()
-    print "new process args: ",arguments
     for index in range(1,len(arguments)):
         arguments[index] = arguments[index].encode("ascii")
-    print "new process args: ",arguments
     newProgram = subProcess(arguments)
 
     
@@ -66,6 +63,7 @@ def getCommand(message):
         , 'ip': "send-ip"
         , '3ed': "play-3ed"
         , 'at': "make-at"
+        , 'atme': "make-atme"
     }.get(message, "pbme \"pushServer: wrong command received !\";echo "+message+" > /data/tmp/err")
 
 def getEnvo(message):

@@ -1,7 +1,7 @@
 #!/bin/bash
 dir=$(dirname $(readlink  -f "$0"))
 cd $dir
-echo "$2" > ./data/atData
+echo pbme "$2" > ./data/atData
 yy=$(date +%Y)
 at -f ./data/atData "${1}"/${yy}
 
