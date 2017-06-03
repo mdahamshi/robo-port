@@ -35,8 +35,8 @@ def parse(message):
     if command == "restart":
         subProcess('/usr/bin/play-atte')
         replaceMe("pushServer")
-    if os.path.isfile('../'+command):
-        arguments[0] =  '../' +  command 
+    if os.path.isfile('./'+command):
+        arguments[0] =  './' +  command 
     else:
         arguments[0] =  '/usr/bin/' +  command
     print os.getcwd()

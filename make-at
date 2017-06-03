@@ -4,4 +4,7 @@ cd $dir
 echo "$2" > ./data/atData
 yy=$(date +%Y)
 at -f ./data/atData "${1}"/${yy}
-
+if [ "$?" -eq 0 ]
+then
+    pbme "Got it :)"
+fi
