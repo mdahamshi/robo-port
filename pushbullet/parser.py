@@ -8,7 +8,7 @@ import signal
 import codecs
 global program
 global chars
-chars = set('\;\&\|')
+chars = set('\;\&\|\$')
 program = -1
 pw_record = pwd.getpwnam('mohammad')
 env = os.environ.copy()
@@ -22,7 +22,7 @@ def parse(message):
     global program
     global chars
     if any((c in chars) for c in message):
-        subProcess("pbme \"Attack detetcted !\"")
+        subProcess(["/usr/bin/pbme","Attack has been detected !"])
         return
     arguments = message.split('::')
 
