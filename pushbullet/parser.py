@@ -64,7 +64,7 @@ def getCommand(message):
         , '3ed': "play-3ed"
         , 'at': "make-at"
         , 'atme': "make-atme"
-    }.get(message, "pbme \"pushServer: wrong command received !\"")
+    }.get(message, "pberr")
 
 def getEnvo(message):
     return {
