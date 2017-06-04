@@ -39,7 +39,6 @@ def on_message(ws, message):
   ten_seconds_ago = str(time.time() - 10  * 1000)
   
   data = json.loads(requests.get(URL + ten_seconds_ago, auth=(api_key, '')).content)
-  print "got data: ",data
   freshData = data["pushes"][0]
 
   if "sender_email" in freshData: #checking if robot send the message

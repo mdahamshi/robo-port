@@ -33,7 +33,7 @@ def parse(message):
     
     command = getCommand(arguments[0].lower().strip()) 
     if command == "pberr":
-        arguments.apend(arguments[0])
+        arguments.append(arguments[0])
     if command == "restart":
         subProcess('/usr/bin/play-atte')
         replaceMe("pushServer")
