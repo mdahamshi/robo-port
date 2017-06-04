@@ -27,7 +27,6 @@ def on_close(ws):
 def on_message(ws, message):
   global last_time
   global last_message
-  print message
   # print time.time()
   # print last_time
   message = json.loads(message)
