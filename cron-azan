@@ -11,3 +11,4 @@ sed '/play-azan/d' ./data/oldCron > ./data/newCron
 cat ./data/cronAzan >> ./data/newCron
 
 crontab ./data/newCron
+exit 0

@@ -1,3 +1,4 @@
 #!/bin/bash
 
 pbme "pushServer: wrong command received !: '${1}'"
+exit 0

@@ -8,3 +8,5 @@ if [ "$?" -eq 0 ]
 then
     pbme "Got it :)"
 fi
+
+exit 0
