@@ -4,5 +4,5 @@ cd $dir
 ./stop-mplayer
 ./play-atte
 ./set-volume 70
-mplayer ./audio/3ed.mp3
+$(mplayer ./audio/3ed.mp3 &> /dev/null)
 exit 0
