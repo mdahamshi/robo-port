@@ -2,6 +2,6 @@
 play-atte
 set-volume 60
 cd /data/archbkp/robot/audio
-mplayer arrive.mp3 
+$(mplayer arrive.mp3 &> /dev/null)
 robo-speak-no "لقد وصل المَلِكْ"
 exit 0

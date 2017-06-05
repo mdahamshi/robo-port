@@ -2,6 +2,6 @@
 stop-mplayer
 play-atte
 set-volume 80
-mplayer /data/archbkp/robot/audio/bday.mp3 
+$(mplayer /data/archbkp/robot/audio/bday.mp3  &> /dev/null)
 robo-speak-no
 exit 0

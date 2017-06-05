@@ -11,6 +11,6 @@ else
     ./set-volume 50
 fi
 
-mplayer ./audio/$1
+$(mplayer ./audio/$1   &> /dev/null)
 
 exit 0

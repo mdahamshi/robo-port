@@ -3,5 +3,5 @@ stop-mplayer
 play-atte
 set-volume 40
 cd /data/quran
-mplayer 018.mp3 &
+$(mplayer 018.mp3   &> /dev/null) &
 exit 0

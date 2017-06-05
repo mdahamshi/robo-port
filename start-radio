@@ -2,7 +2,7 @@
 stop-mplayer
 play-atte
 set-volume 50
-mplayer http://radiocast-rr-d.vidnt.com:8000/ipbc_IPBCmakanradioLAM &
+$(mplayer http://radiocast-rr-d.vidnt.com:8000/ipbc_IPBCmakanradioLAM  &> /dev/null)&
 sleep 1800
 stop-mplayer
 exit 0

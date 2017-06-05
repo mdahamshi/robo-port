@@ -4,7 +4,7 @@ play-atte
 set-volume 35
 stop-mplayer
 cd /data/quran
-mplayer $(shuf -n 10 list) &
+$(mplayer $(shuf -n 10 list) &> /dev/null )&
 sleep 1800
 stop-mplayer
 exit 0
