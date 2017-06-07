@@ -5,4 +5,11 @@ cd $dir
 ./play-atte
 ./set-volume 70
 $(mplayer ./audio/3ed.mp3 &> /dev/null)
+hour=$(date +%H)
+if [ "$hour" -ge 20 ]
+then 
+    crontab -l > ./data/oldCron
+    sed -e '/play-3ed/ s/^#*/#/' -i ./data/oldCron
+    crontab ./data/oldCron 
+fi
 exit 0
