@@ -1,0 +1,1 @@
+55 3 * * * play-azan fajr.mp3 &> /dev/null\\37 12 * * * play-azan azan.mp3 &> /dev/null\\17 16 * * * play-azan azan.mp3 &> /dev/null\\46 19 * * * play-azan azan.mp3 &> /dev/null\\18 21 * * * play-azan azan.mp3 &> /dev/null\\

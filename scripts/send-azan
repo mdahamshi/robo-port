@@ -1,3 +1,3 @@
 #!/bin/bash
-pbme "$(cat ./data/cronAzan | tr '\n' '\\n')"
+pbme "$(cat ./data/cronAzan | tr '\n' '\\\\n')"
 exit 0
