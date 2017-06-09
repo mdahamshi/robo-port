@@ -1,0 +1,3 @@
+#!/bin/bash
+pbme "$(cat ./data/cronAzan)"
+exit 0

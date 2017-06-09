@@ -66,6 +66,7 @@ def getCommand(message):
         , '3ed': "play-3ed"
         , 'at': "make-at"
         , 'atme': "make-atme"
+        , 'azan': "scripts/send-azan"
     }.get(message, "pberr")
 
 def getEnvo(message):
