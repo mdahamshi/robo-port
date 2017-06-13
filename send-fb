@@ -1,0 +1,6 @@
+#!/bin/bash
+arg="m \"$1\" $2"
+messer /data/aes/config.json  cat <<< $arg  &
+messerpid=$!
+sleep 20
+kill $messerpid
