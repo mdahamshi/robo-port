@@ -1,6 +1,11 @@
 #!/bin/bash
 dir=$(dirname $(readlink  -f "$0"))
 cd $dir
+if [ -n "$3" ]
+then
+    sleep $3
+fi
+
 arg="m \"$1\" $2"
 messer /data/aes/config.json  cat <<< $arg  &
 messerpid=$!
