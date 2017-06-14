@@ -1,0 +1,57 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          scriptname
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start daemon at boot time
+# Description:       Enable service provided by daemon.
+### END INIT INFO
+cd /data/archbkp/robot/pushbullet/
+push_running=`pgrep -a py | awk '/push/{print $1}'`
+
+ 
+case "$1" in
+    start)
+        if [ -n "$push_running" ]; then
+                echo "Push already running..."
+                exit 0
+        fi
+        echo -n "Starting Push Server: "
+        su -l mohammad -c "/usr/bin/pushServer &" >/dev/null 2>&1
+
+        sleep 3
+	pb "speak::مرحبا"
+        echo "done"
+        ;;
+    stop)
+        if [ -z "$push_running"  ]; then
+                echo "Push Server is not running (no process found)..."
+                exit 0
+        fi
+        echo -n "Killing Push Server: "
+        # Trying to kill the Plex Media Server itself but also the Plug-ins
+        kill "$push_running" -9 >/dev/null 2>&1
+        sleep 1
+        echo "done"
+        ;;
+    restart)
+        sh $0 stop
+        sh $0 start
+        ;;
+    status)
+        if [ -n "$push_running" ]; then
+                echo "Push Server process running."
+        else
+                echo "It seems that Push Server isn't running (no process found)."
+		exit 1
+        fi
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart|status}"
+        exit 1
+        ;;
+esac
+ 
+exit 0
