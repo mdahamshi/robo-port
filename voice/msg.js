@@ -1,1 +1,1 @@
-var message = "مرحبا"
+var message = "سِراج رُدّي على الواْتس"

@@ -4,6 +4,7 @@ cd $dir
 if [ -n "$3" ]
 then
     sleep $3
+	echo sleep $3
 fi
 
 arg="m \"$1\" $2"

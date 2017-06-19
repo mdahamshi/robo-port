@@ -1,0 +1,13 @@
+#!/bin/bash
+if [ -z "$1" ]
+then
+    echo "please provide a range of hours"
+fi
+maxdelay=$(($1*60))  
+if [ "$1" -gt 0 ]
+then
+    delay=$(($RANDOM%maxdelay))
+    sleep $((delay*60)); 
+fi
+eval $2 &
+exit 0
