@@ -1,4 +1,4 @@
 !#/bin/bash
 sleep 60
-pushServer &
+sudo pushDaemon start
 exit 0
