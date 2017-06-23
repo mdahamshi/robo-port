@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo pushDaemon status
-if [ "$?" -eq 1]
+if [ "$?" -eq 1 ]
 then
     sudo pushDaemon start
     pbme "assertion done successfully :)"
