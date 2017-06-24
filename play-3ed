@@ -3,7 +3,7 @@ dir=$(dirname $(readlink  -f "$0"))
 cd $dir
 ./stop-mplayer
 ./play-atte
-./set-volume 70
+./set-volume 50
 $(mplayer ./audio/3ed.mp3 &> /dev/null)
 hour=$(date +%H)
 if [ "$hour" -ge 20 ]
