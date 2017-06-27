@@ -1,0 +1,3 @@
+#!/bin/bash
+pbme "I'm alive :)"
+exit 0
