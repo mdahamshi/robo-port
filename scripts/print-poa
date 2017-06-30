@@ -1,0 +1,3 @@
+#!/bin/bash
+lp ./data/poa.pdf
+exit 0

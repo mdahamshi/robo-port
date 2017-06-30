@@ -68,6 +68,7 @@ def getCommand(message):
         , 'atme': "make-atme"
         , 'azan': "scripts/send-azan"
         , 't': "scripts/alive"
+        , 'print': "scripts/print-poa"
     }.get(message, "pberr")
 
 def getEnvo(message):
