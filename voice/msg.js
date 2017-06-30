@@ -1,1 +1,1 @@
-var message = "لقد وصل المَلِكْ"
+var message = "مرحبا"

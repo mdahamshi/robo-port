@@ -22,7 +22,7 @@ case "$1" in
         su -l mohammad -c "/usr/bin/pushServer &" >/dev/null 2>&1
 
         sleep 3
-	pb "speak::مرحبا"
+	pbme "pushServer started successfuly !"
         echo "done"
         ;;
     stop)
