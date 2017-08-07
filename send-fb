@@ -3,8 +3,8 @@ dir=$(dirname $(readlink  -f "$0"))
 cd $dir
 if [ -n "$3" ]
 then
-    sleep $3
 	echo sleep $3
+    sleep $3
 fi
 
 arg="m \"$1\" $2"
