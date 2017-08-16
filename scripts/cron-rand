@@ -9,5 +9,13 @@ then
     delay=$(($RANDOM%maxdelay))
     sleep $((delay*60)); 
 fi
+hour=`date +%H`
+if [ "$3" == 'day' ]
+then
+    if [ "$hour" -lt 7 ] || [ "$hour" -gt 22 ]
+    then
+        sleep $((12*3600))  #sleep for 12 hours so command in day hours
+    fi
+fi
 eval $2 &
 exit 0
