@@ -6,7 +6,7 @@ import sys
 import speak
 today = datetime.date.today()
 
-daysInMonth = 30
+daysInMonth = 31
 
 
 
