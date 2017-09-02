@@ -1,4 +1,5 @@
 #!/bin/bash
+pre-speak
 stop-mplayer
 play-atte
 set-volume 80
