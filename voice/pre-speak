@@ -1,0 +1,7 @@
+#!/bin/bash
+
+dir=$(dirname $(readlink  -f "$0"))
+cd $dir
+export DISPLAY=:0.0
+DISPLAY=:0.0 wmctrl -R chromium
+exit 0

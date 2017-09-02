@@ -4,8 +4,9 @@ cd $dir
 export DISPLAY=:0.0
 if [ -n "$1" ]
 then
-	echo -e "var message = "\"$1\" > ./msg.js
+     echo -e "var message = "\"$1\" > ./msg.js
 fi
+
 play-atte
 set-volume 60
 if [ -z $(pgrep chromium | tail -n 1) ]
