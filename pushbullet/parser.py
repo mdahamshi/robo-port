@@ -25,13 +25,13 @@ def parse(message):
         subProcess(["/usr/bin/pbme","Attack has been detected !"])
         return
     arguments = message.split('::')
-
+    arguments[0] = arguments[0].lower().strip()
     if arguments[0] == 'speak' or arguments[0] == 'speakr':
         if len(arguments) > 1:
             speakHelper(arguments[1],arguments[0])
         return
     
-    command = getCommand(arguments[0].lower().strip()) 
+    command = getCommand(arguments[0]) 
     if command == "pberr":
         arguments.append(arguments[0])
     if command == "restart":
