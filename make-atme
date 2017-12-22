@@ -7,6 +7,8 @@ at -f ./data/atData "${1}"/${yy}
 if [ "$?" -eq 0 ]
 then
     pbme "Got it :)"
+else
+	pbme "atme::hh:mm mm/dd::msg"
 fi
 
 exit 0

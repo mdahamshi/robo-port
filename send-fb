@@ -7,8 +7,11 @@ then
     sleep $3
 fi
 
-arg="m \"$1\" $2"
-messer /data/aes/config.json  cat <<< $arg  &
+sig='Sent with <3 by Robo  about.me/rdahamshi'
+br='                                '
+arg="m \"$1\" $2$br$br$sig"
+messer /data/aes/config.json  cat <<< "$arg"  &
 messerpid=$!
 sleep 20
 kill $messerpid
+pbme "Sent :) $arg"
